@@ -1,0 +1,133 @@
+{
+  "name": "Invoice",
+  "type": "object",
+  "properties": {
+    "invoice_number": {
+      "type": "string",
+      "description": "Unique invoice number"
+    },
+    "client_name": {
+      "type": "string",
+      "description": "Name of the client"
+    },
+    "client_email": {
+      "type": "string",
+      "description": "Client email address"
+    },
+    "client_address": {
+      "type": "string",
+      "description": "Client address"
+    },
+    "invoice_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Invoice date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Payment due date"
+    },
+    "currency": {
+      "type": "string",
+      "enum": [
+        "USD",
+        "EUR",
+        "GBP",
+        "JPY",
+        "AUD",
+        "CAD",
+        "CHF",
+        "CNY",
+        "INR",
+        "MXN"
+      ],
+      "default": "USD",
+      "description": "Invoice currency"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "sent",
+        "paid",
+        "overdue"
+      ],
+      "default": "draft",
+      "description": "Invoice status"
+    },
+    "items": {
+      "type": "array",
+      "description": "Invoice line items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "rate": {
+            "type": "number"
+          },
+          "amount": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "description": "Subtotal amount"
+    },
+    "tax_rate": {
+      "type": "number",
+      "description": "Tax rate percentage"
+    },
+    "tax_amount": {
+      "type": "number",
+      "description": "Tax amount"
+    },
+    "surcharges": {
+      "type": "array",
+      "description": "Additional surcharges or fees",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "percentage",
+              "fixed"
+            ]
+          }
+        }
+      }
+    },
+    "total": {
+      "type": "number",
+      "description": "Total amount"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes"
+    },
+    "payment_terms": {
+      "type": "string",
+      "description": "Payment terms"
+    }
+  },
+  "required": [
+    "client_name",
+    "invoice_date",
+    "items",
+    "total"
+  ]
+}
