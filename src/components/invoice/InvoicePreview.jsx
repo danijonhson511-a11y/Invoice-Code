@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Edit, Plus, Printer } from "lucide-react";
+import { CreditCard as Edit, Plus, Printer } from "lucide-react";
 import { getCurrencySymbol } from "./CurrencySelector";
 import { format, parseISO } from "date-fns";
 
